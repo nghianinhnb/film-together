@@ -1,0 +1,16 @@
+import { RESULT } from "../../config/enum";
+
+export abstract class BaseHttpError extends Error {
+    abstract statusCode: number;
+
+    constructor(message: string) {
+        super(message);
+
+        Object.setPrototypeOf(this, BaseHttpError.prototype);
+    }
+
+    abstract respond(): {
+        result: RESULT,
+        reason: string,
+    }
+}
