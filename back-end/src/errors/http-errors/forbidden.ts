@@ -1,12 +1,12 @@
-import { RESULT } from "../../config/enum";
+import { RESULT, ERROR_VI } from "../../general/enum";
 import { BaseHttpError } from "./base-http-error";
 
 
 export class ForbiddenError extends BaseHttpError {
     statusCode = 403;
   
-    constructor(message: string) {
-        super(message);
+    constructor() {
+        super(ERROR_VI.PERMISISON_DENIED);
 
         Object.setPrototypeOf(this, ForbiddenError.prototype);
     }
@@ -14,7 +14,7 @@ export class ForbiddenError extends BaseHttpError {
     respond() {
         return {
             result: RESULT.fail,
-            reason: this.message,
+            message: this.message,
         };
     }
 }

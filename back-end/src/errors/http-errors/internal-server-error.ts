@@ -1,12 +1,12 @@
-import { RESULT } from "../../config/enum";
+import { RESULT, ERROR_VI } from "../../general/enum";
 import { BaseHttpError } from "./base-http-error";
 
 
 export class InternalServerError extends BaseHttpError {
     statusCode = 500;
   
-    constructor(message: string) {
-        super(message);
+    constructor() {
+        super(ERROR_VI.INTERNAL_ERROR);
 
         Object.setPrototypeOf(this, InternalServerError.prototype);
     }
@@ -14,7 +14,7 @@ export class InternalServerError extends BaseHttpError {
     respond() {
         return {
             result: RESULT.fail,
-            reason: this.message,
+            message: this.message,
         };
     }
 }

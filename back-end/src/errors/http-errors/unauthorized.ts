@@ -1,12 +1,12 @@
-import { RESULT } from "../../config/enum";
+import { RESULT, ERROR_VI } from "../../general/enum";
 import { BaseHttpError } from "./base-http-error";
 
 
 export class UnauthorizedError extends BaseHttpError {
     statusCode = 401;
   
-    constructor(message: string) {
-        super(message);
+    constructor() {
+        super(ERROR_VI.UNAUTHORIZED);
 
         Object.setPrototypeOf(this, UnauthorizedError.prototype);
     }
@@ -14,7 +14,7 @@ export class UnauthorizedError extends BaseHttpError {
     respond() {
         return {
             result: RESULT.fail,
-            reason: this.message,
+            message: this.message,
         };
     }
 }

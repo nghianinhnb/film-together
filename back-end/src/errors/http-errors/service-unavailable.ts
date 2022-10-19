@@ -1,12 +1,12 @@
-import { RESULT } from "../../config/enum";
+import { RESULT, ERROR_VI } from "../../general/enum";
 import { BaseHttpError } from "./base-http-error";
 
 
 export class ServiceUnavailableError extends BaseHttpError {
     statusCode = 503;
   
-    constructor(message: string) {
-        super(message);
+    constructor() {
+        super(ERROR_VI.SERVICE_UNAVAILABLE);
 
         Object.setPrototypeOf(this, ServiceUnavailableError.prototype);
     }
@@ -14,7 +14,7 @@ export class ServiceUnavailableError extends BaseHttpError {
     respond() {
         return {
             result: RESULT.fail,
-            reason: this.message,
+            message: this.message,
         };
     }
 }

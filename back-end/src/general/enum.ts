@@ -5,7 +5,7 @@ export enum RESULT {
 
 
 export enum ERROR_VI {
-    UNAUTHORIZED = 'Không có quyền truy nhập',
+    UNAUTHORIZED = 'Chưa đăng nhập',
     PERMISISON_DENIED  = 'Không đủ quyền thực hiện chức năng này',
     MISSING_PARAMETERS = 'Không đủ tham số',
     INTERNAL_ERROR = 'Lỗi máy chủ',
@@ -16,4 +16,6 @@ export enum ERROR_VI {
     ACCOUNT_EXISTS = 'Tài khoản đã tồn tại',
     WRONG_OLD_PASSWORD = 'Nhập sai mật khẩu hiện tại',
     INVALID_EMAIL = 'Email không hợp lệ',
+    SERVICE_UNAVAILABLE = 'Server đang bận',
+    INVALID_PASSWORD = 'Email không hợp lệ',
 }

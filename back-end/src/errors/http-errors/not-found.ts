@@ -1,12 +1,12 @@
-import { RESULT } from "../../config/enum";
+import { RESULT, ERROR_VI } from "../../general/enum";
 import { BaseHttpError } from "./base-http-error";
 
 
 export class NotFoundError extends BaseHttpError {
     statusCode = 404;
   
-    constructor(message: string) {
-        super(message);
+    constructor() {
+        super(ERROR_VI.NOT_FOUND);
 
         Object.setPrototypeOf(this, NotFoundError.prototype);
     }
@@ -14,7 +14,7 @@ export class NotFoundError extends BaseHttpError {
     respond() {
         return {
             result: RESULT.fail,
-            reason: this.message,
+            message: this.message,
         };
     }
 }

@@ -1,12 +1,12 @@
-import { RESULT } from "../../config/enum";
+import { RESULT, ERROR_VI } from "../../general/enum";
 import { BaseHttpError } from "./base-http-error";
 
 
 export class BadRequestError extends BaseHttpError {
     statusCode = 400;
   
-    constructor(message: string) {
-        super(message);
+    constructor(message?: string) {
+        super(message || ERROR_VI.MISSING_PARAMETERS);
 
         Object.setPrototypeOf(this, BadRequestError.prototype);
     }
@@ -14,7 +14,7 @@ export class BadRequestError extends BaseHttpError {
     respond() {
         return {
             result: RESULT.fail,
-            reason: this.message,
+            message: this.message,
         };
     }
 }

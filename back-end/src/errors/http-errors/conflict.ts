@@ -1,12 +1,12 @@
-import { RESULT } from "../../config/enum";
+import { RESULT, ERROR_VI } from "../../general/enum";
 import { BaseHttpError } from "./base-http-error";
 
 
 export class ConflictError extends BaseHttpError {
     statusCode = 409;
   
-    constructor(message: string) {
-        super(message);
+    constructor() {
+        super(ERROR_VI.ACCOUNT_EXISTS);
 
         Object.setPrototypeOf(this, ConflictError.prototype);
     }
@@ -14,7 +14,7 @@ export class ConflictError extends BaseHttpError {
     respond() {
         return {
             result: RESULT.fail,
-            reason: this.message,
+            message: this.message,
         };
     }
 }

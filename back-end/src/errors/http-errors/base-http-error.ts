@@ -1,4 +1,4 @@
-import { RESULT } from "../../config/enum";
+import { RESULT } from "../../general/enum";
 
 export abstract class BaseHttpError extends Error {
     abstract statusCode: number;
@@ -11,6 +11,6 @@ export abstract class BaseHttpError extends Error {
 
     abstract respond(): {
         result: RESULT,
-        reason: string,
+        message: string,
     }
 }
