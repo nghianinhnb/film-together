@@ -6,7 +6,7 @@ import { Controller } from '../../general/interface';
 
 import { moviePath } from '../../general/constants';
 import { RESULT } from '../../general/enum';
-import { saveStreamingFile, sendStreamingMovie } from '../../services/file-stream.service';
+import { saveStreamingFile, sendMovie } from '../../services/file-stream.service';
 import { BadRequestError, NotFoundError } from '../../errors';
 
 
@@ -46,7 +46,7 @@ export const movieControllers: Controller = {
             const movieMetaData = await Movie.findOne({name: movieName});
             if (movieMetaData === null) throw new NotFoundError();
 
-            sendStreamingMovie(req, res, movieMetaData);
+            sendMovie(req, res, movieMetaData);
         }
     ],
 

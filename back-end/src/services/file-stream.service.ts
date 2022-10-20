@@ -1,6 +1,8 @@
 import fs from 'fs';
 import { Request, Response } from 'express';
+
 import { BadRequestError } from '../errors';
+import { MAX_BYTES__PER_SECOND } from '../config/streaming.config';
 
 
 export const saveStreamingFile = (req: Request, filePath: string): Promise<string> => {
@@ -46,7 +48,7 @@ interface MovieMetadata {
     [propName: string]: any;
 }
 
-export const sendStreamingMovie = (req: Request, res: Response, movieMetadata: MovieMetadata) => {
+export const sendMovie = (req: Request, res: Response, movieMetadata: MovieMetadata) => {
     const videoRange = req.headers.range;
     if (!videoRange) throw new BadRequestError();
 
@@ -54,9 +56,12 @@ export const sendStreamingMovie = (req: Request, res: Response, movieMetadata: M
 
     const parts = videoRange.slice(6).split("-");
     const start = parseInt(parts[0], 10);
-    const end = parts[1]
-        ? parseInt(parts[1], 10)
-        : size-1;
+    const end = Math.min(
+        start + MAX_BYTES__PER_SECOND,
+        parts[1]
+            ? parseInt(parts[1], 10)
+            : size-1
+    )
 
     const chunksize = (end-start) + 1;
     const head = {
