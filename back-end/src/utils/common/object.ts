@@ -41,10 +41,17 @@ function sortObjectComparator (key: string, order: 'asc' | 'desc') {
     }
 }
 
+function removeUndefindValue(obj: any): any {
+    for (let key in obj) if (obj[key] === undefined) delete obj[key];
+    return obj;
+}
+
+
 export {
     pick,
     omit,
     getKeys,
-    sortObjectComparator
+    sortObjectComparator,
+    removeUndefindValue,
 }
   
