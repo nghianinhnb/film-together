@@ -23,7 +23,8 @@ function checkMissedConfig() {
 
     'log.level',
 
-    'csp.enabled', 'csp.report_only', 'csp.report_uri',
+    'csp.enabled', 'csp.report_only', 
+    // 'csp.report_uri',
 
     'security.frameguard.enabled',
 
@@ -36,7 +37,7 @@ function checkMissedConfig() {
   const miss: string[] = [];
 
   for (const key of required) {
-    if (!config.has(key)) {
+    if (!config.has(key) || config.get<any>(key) === null) {
       miss.push(key);
     }
   }
