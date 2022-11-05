@@ -3,6 +3,7 @@ import 'express-async-errors';
 import path from 'path';
 import cors from 'cors';
 
+import { CONFIG } from './initialize/config';
 import { errorHandler, currentUser } from './middlewares';
 import routes from './routes';
 
@@ -10,7 +11,7 @@ import routes from './routes';
 const app = express().disable('x-powered-by');
 
 // Express Setting
-// app.set('trust proxy', true);
+app.set('trust proxy', CONFIG.TRUST_PROXY);
 
 
 // Common Middlewares

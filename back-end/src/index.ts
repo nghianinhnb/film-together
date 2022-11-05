@@ -1,18 +1,22 @@
 require('dotenv').config();
 import mongoose from 'mongoose';
 
+
+// Check required config and dependence
+import { checkBeforeInit } from './initialize/check-before-init';
+checkBeforeInit();
+
+
+// Start server
 import app from './app';
+import { CONFIG } from './initialize/config';
 
 
 async function start() {
-    const PORT = process.env.PORT || 8000;
-
-    if (!process.env.JWT_KEY) throw new Error("JWT_KEY must be defined");
-    
-    if (!process.env.MONGO_URI) throw new Error("MONGO_URI must be defined");
+    const PORT = CONFIG.LISTEN.PORT;
     
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect(CONFIG.MONGO.URI);
         console.log("Connected to MongoDb");
     } catch (err) {
         console.error(err);

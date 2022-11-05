@@ -51,8 +51,25 @@ function checkNodeVersion() {
 
   console.log('Checking NodeJS version %s.', v);
 
-  if (major <= 16) {
+  if (major < 16) {
     throw new Error('Your NodeJS version ' + v + ' is not supported. Please upgrade.');
+  }
+}
+
+// -----------------------------------------------------------------
+
+function checkBeforeInit() {
+  const missed = checkMissedConfig()
+  if (missed.length !== 0) {
+    console.error('Your configuration files miss keys: ' + missed)
+    process.exit(-1)
+  }
+
+  try {
+    checkNodeVersion()
+  } catch (err) {
+    console.error('Error in NodeJS check.', { err })
+    process.exit(-1)
   }
 }
 
@@ -61,4 +78,5 @@ function checkNodeVersion() {
 export {
   checkMissedConfig,
   checkNodeVersion,
+  checkBeforeInit,
 }
