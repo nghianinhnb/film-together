@@ -1,1 +1,0 @@
-export const MAX_BYTES__PER_SECOND = 3 * 1024 * 1024;

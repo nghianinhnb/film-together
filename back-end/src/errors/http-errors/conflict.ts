@@ -1,4 +1,4 @@
-import { RESULT, ERROR_VI } from "../../general/enum";
+import { RESULT, ERROR_VI } from "../../initialize/enum";
 import { BaseHttpError } from "./base-http-error";
 
 

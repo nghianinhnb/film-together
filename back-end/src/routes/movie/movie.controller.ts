@@ -2,10 +2,10 @@ import { Request, Response } from 'express';
 
 import {Movie} from '../../models';
 import { checkAdmin } from '../../middlewares';
-import { Controller } from '../../general/interface';
+import { Controller } from '../../initialize/interface';
 
-import { moviePath } from '../../general/constants';
-import { RESULT } from '../../general/enum';
+import { MOVIE_PATH } from '../../initialize/constants';
+import { RESULT } from '../../initialize/enum';
 import { saveStreamingFile, sendMovie } from '../../services/file-stream.service';
 import { BadRequestError, NotFoundError } from '../../errors';
 
@@ -53,11 +53,11 @@ export const movieControllers: Controller = {
 
     // POST Request
     uploadMovie: [
-        // checkAdmin,
+        checkAdmin,
         async (req: Request, res: Response) => {
             const movieName = req.params.movieName;
             
-            const savedMoviePath = await saveStreamingFile(req, `${moviePath}\\${movieName}`)
+            const savedMoviePath = await saveStreamingFile(req, `${MOVIE_PATH}\\${movieName}`)
 
             const movieSize = parseInt(req.headers['content-length']!);
 
