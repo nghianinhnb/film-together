@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { RESULT, ERROR_VI } from '../../initialize/enum';
+import { RESULT, ERROR_VI } from '../../types/enum';
 import { Controller } from '../../initialize/interface';
 import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError } from '../../errors';
 

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { BaseHttpError } from "../errors";
-import { RESULT, ERROR_VI } from '../initialize/enum';
+import { RESULT, ERROR_VI } from '../types/enum';
 
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {

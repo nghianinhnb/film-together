@@ -1,4 +1,4 @@
-import { RESULT } from "../../initialize/enum";
+import { RESULT } from "../../types/enum";
 
 export abstract class BaseHttpError extends Error {
     abstract statusCode: number;

@@ -5,7 +5,7 @@ import { checkAdmin } from '../../middlewares';
 import { Controller } from '../../initialize/interface';
 
 import { MOVIE_PATH } from '../../initialize/constants';
-import { RESULT } from '../../initialize/enum';
+import { RESULT } from '../../types/enum';
 import { saveStreamingFile, sendMovie } from '../../services/file-stream.service';
 import { BadRequestError, NotFoundError } from '../../errors';
 

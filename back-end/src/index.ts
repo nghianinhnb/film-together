@@ -1,13 +1,11 @@
-require('dotenv').config();
-import mongoose from 'mongoose';
-
-
 // Check required config and dependence
 import { checkBeforeInit } from './initialize/check-before-init';
 checkBeforeInit();
 
 
 // Start server
+import mongoose from 'mongoose';
+
 import app from './app';
 import { CONFIG } from './initialize/config';
 
