@@ -2,7 +2,7 @@ import fs from 'fs';
 import { Request, Response } from 'express';
 
 import { BadRequestError } from '../errors';
-import { MAX_BYTES__PER_SECOND } from '../config/streaming.config';
+import { MAX_BYTES_PER_SECOND } from '../initialize/constants';
 
 
 export const saveStreamingFile = (req: Request, filePath: string): Promise<string> => {
@@ -57,7 +57,7 @@ export const sendMovie = (req: Request, res: Response, movieMetadata: MovieMetad
     const parts = videoRange.slice(6).split("-");
     const start = parseInt(parts[0], 10);
     const end = Math.min(
-        start + MAX_BYTES__PER_SECOND,
+        start + MAX_BYTES_PER_SECOND,
         parts[1]
             ? parseInt(parts[1], 10)
             : size-1
