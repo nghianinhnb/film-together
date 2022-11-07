@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import { RESULT, ERROR_VI } from '../../types/enum';
-import { Controller } from '../../initialize/interface';
+import { Controller } from '../../types/interface';
 import { BadRequestError, ConflictError, NotFoundError, UnauthorizedError } from '../../errors';
 
 import { User } from '../../models';

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import {Movie} from '../../models';
 import { checkAdmin } from '../../middlewares';
-import { Controller } from '../../initialize/interface';
+import { Controller } from '../../types/interface';
 
 import { MOVIE_PATH } from '../../initialize/constants';
 import { RESULT } from '../../types/enum';
