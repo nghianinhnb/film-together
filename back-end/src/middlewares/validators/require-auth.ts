@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { UnauthorizedError } from '../errors';
+import { UnauthorizedError } from '../../errors';
 
 
 export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
