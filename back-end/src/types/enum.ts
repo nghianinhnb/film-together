@@ -18,4 +18,12 @@ export enum ERROR_VI {
     INVALID_EMAIL = 'Email không hợp lệ',
     SERVICE_UNAVAILABLE = 'Server đang bận',
     INVALID_PASSWORD = 'Email không hợp lệ',
+    TOO_MANY_REQUESTS = 'Quá nhiều yêu cầu liên tục. Hãy thử lại sau ít phút'
+}
+
+
+export enum USER_ROLE {
+    ADMINISTRATOR = 0,
+    MODERATOR = 1,
+    USER = 2
 }
