@@ -5,7 +5,7 @@ import cors from 'cors';
 
 import { CONFIG } from './initialize/config';
 import routes from './routes';
-import { asyncMiddleware ,errorHandler, currentUser, baseCSP } from './middlewares';
+import { errorHandler, baseCSP } from './middlewares';
 
 
 const app = express().disable('x-powered-by');
@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: true, limit: '500kb' }))
 
 
 // Custom Middlewares
-app.use(currentUser);
 app.use("/api/v1", routes);
 app.use(errorHandler);
 

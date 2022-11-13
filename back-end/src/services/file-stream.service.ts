@@ -50,11 +50,11 @@ interface MovieMetadata {
 
 export const sendMovie = (req: Request, res: Response, movieMetadata: MovieMetadata) => {
     const videoRange = req.headers.range;
-    if (!videoRange) throw new BadRequestError();
+    // if (!videoRange) throw new BadRequestError();
 
     const {path, size} = movieMetadata;
 
-    const parts = videoRange.slice(6).split("-");
+    const parts = videoRange!.slice(6).split("-");
     const start = parseInt(parts[0], 10);
     const end = Math.min(
         start + MAX_BYTES_PER_SECOND,

@@ -19,9 +19,9 @@ declare global {
     }
 }
 
-export const currentUser = (req: Request, res: Response, next: NextFunction) => {
+export const auth = (req: Request, res: Response, next: NextFunction) => {
     let token = req.headers.authorization && req.headers.authorization.match(/^Bearer (.*)$/);
-    if (!token || !token[1]) return next();
+    if (!token || !token[1]) throw new UnauthorizedError();
 
     let jwt_payload = token[1];
 
